@@ -3,6 +3,7 @@ package com.lanou.test;
 import com.lanou.domain.Student;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -140,6 +141,8 @@ public class StudentTest {
         Criteria criteria = session.createCriteria(Student.class);
         //设置对多查询条数
         criteria.setMaxResults(2);
+
+        criteria.add(Restrictions.eq("sname","马祥光"));
 
         //获取查询的结果集
         List<Student> students = criteria.list();
